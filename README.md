@@ -1,4 +1,6 @@
-Hubba is a Chrome/Edge extension to make browsing and searching GitHub easier. We don't bookmark as much as we used to and this extension puts common web links two clicks away.
+## Hubba 
+
+Hi, ever find it hard to search and browse for stuff on GitHub.  Well this is your too. Hubba is a Chrome/Edge extension to make browsing and searching GitHub easier. This is early days so expect more updates and features.
 
 ## Installation
 
@@ -19,3 +21,7 @@ yarn run build
 * click `load unpacked extension`
 * browse to the `/build` of this cloned repo
 * look in tool tray for cat icon in browser
+
+## Contributing
+ 
+* PRs welcome!
