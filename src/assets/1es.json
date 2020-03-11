@@ -1,0 +1,53 @@
+{
+    "Build": {
+      label: "Build",
+      index: 0,
+      nodes: {
+        "CloudBuild": {
+          label: "CloudBuild",
+          link: "https://www.1eswiki.com/wiki/CloudBuild"
+        },
+        "MSBuild": {
+          label: "MSBuild",
+          link: "https://www.1eswiki.com/wiki/MSBuild"
+        },
+        "Build Accelerator (Domino)": {
+          label: "Build Accelerator (Domino)",
+          link: "https://mseng.visualstudio.com/domino/_wiki/wikis/Domino.wiki?pagePath=%2FBuildXL&wikiVersion=GBwikiMaster&pageId=6168"
+        },
+        "Azure Pipelines": {
+          label: "Azure Pipelines",
+          link: "https://docs.microsoft.com/en-us/azure/devops/pipelines/index?view=azure-devops"
+        }
+      }
+    },
+    "Code": {
+      label: "Code",
+      nodes: {
+        "Visual Studio": {
+          label: "Visual Studio",
+          link: "https://docs.microsoft.com/en-us/visualstudio/?view=vs-2017"
+        },
+        "Visual Studio Code": {
+          label: "Visual Studio Code",
+          link: "https://code.visualstudio.com/docs"
+        },
+        "Azure DevOps Code Search": {
+          label: "Azure DevOps Code Search",
+          link: "https://docs.microsoft.com/en-us/azure/devops/project/search/code-search?view=vsts&tabs=new-nav"
+        },
+        "Azure Repos": {
+          label: "Azure Repos",
+          link: "https://docs.microsoft.com/en-us/azure/devops/repos/index?view=vsts"
+        },
+        "github.com/microsoft": {
+          label: "github.com/microsoft",
+          link: "https://www.github.com/microsoft"
+        },
+        "Code Flow": {
+          label: "Code Flow",
+          link: "https://www.1eswiki.com/wiki/CodeFlow"
+        }
+      }
+    }
+  };
