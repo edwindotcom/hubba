@@ -10,6 +10,7 @@ export const TAB_USER = "User";
 export const TAB_REPO = "Repo";
 export const TAB_ORG = "Org";
 export const TAB_ISSUES = "Issues";
+export const TAB_PATH = "Path";
 export const TAB_ALL = "All";
 
 export const JUMP_ROOT = "github.com";
@@ -36,5 +37,10 @@ export const SEARCH_TYPE_ARRAY = [
          SEARCH_TYPE_TOPICS,
          SEARCH_TYPE_WIKIS
        ];
+
+
+export function trimSlash(s){
+  return s.replace(/^\/|\/$/g, "");
+}
 
 

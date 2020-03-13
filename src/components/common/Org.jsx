@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Strong, TextInput, Button } from "evergreen-ui";
+import { Pane, Text, Strong, TextInput, Button } from "evergreen-ui";
 import {
   GH_BASE_URL
 } from "../app/globals";
@@ -29,11 +29,11 @@ class Org extends React.Component {
 
   render() {
     return (
-      <div>
+      <Pane>
         <form onSubmit={this.handleSubmit}>
           <TextInput
             name="rootArg"
-            placeholder="Search Org Repos"
+            placeholder="User or Org"
             id={this.props.tab}
             onChange={this.handleChange}
             width={130}
@@ -49,7 +49,10 @@ class Org extends React.Component {
           &nbsp;
           <Button>GO</Button>
         </form>
-      </div>
+        <Pane margin={10}>
+          <Text>Search for Repo within a user or org</Text>
+        </Pane>
+      </Pane>
     );
   }
 }

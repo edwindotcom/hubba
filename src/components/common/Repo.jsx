@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Strong, TextInput, Button } from "evergreen-ui";
+import { Strong, TextInput, Button, Pane, Text } from "evergreen-ui";
 import {
   GH_BASE_URL
 } from "../app/globals";
@@ -49,6 +49,11 @@ class Repo extends React.Component {
           &nbsp;
           <Button>GO</Button>
         </form>
+        <Pane
+          margin={10}
+        >
+          <Text>TODO: add select</Text>
+        </Pane>
       </div>
     );
   }

@@ -2,15 +2,15 @@ import * as React from "react";
 import Component from "@reactions/component";
 import { Pane, Tab, Tablist} from "evergreen-ui";
 import ContentManager from "./ContentManager";
-import { TAB_ALL, TAB_USER, TAB_ORG, TAB_REPO, TAB_ISSUES } from "../app/globals";
+import { TAB_ALL, TAB_USER, TAB_ORG, TAB_ISSUES, TAB_PATH } from "../app/globals";
 
-class Search extends React.Component {
+class Hubba extends React.Component {
   render() {
     return (
       <Component
         initialState={{
           selectedIndex: 0,
-          tabs: [TAB_ALL, TAB_REPO, TAB_ORG, TAB_USER, TAB_ISSUES]
+          tabs: [TAB_ALL, TAB_ORG, TAB_USER, TAB_ISSUES, TAB_PATH]
         }}
       >
         {({ state, setState }) => (
@@ -20,7 +20,6 @@ class Search extends React.Component {
                 <Tab
                   key={tab}
                   id={tab}
-                  onClick={() => setState({ rootToken: "edwindotcom" })}
                   onSelect={() => setState({ selectedIndex: index })}
                   isSelected={index === state.selectedIndex}
                   aria-controls={`panel-${tab}`}
@@ -30,7 +29,6 @@ class Search extends React.Component {
               ))}
             </Tablist>
             <Pane
-              // padding={}
               flex={1}
               alignItems="left"
               display="flex"
@@ -55,4 +53,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default Hubba;

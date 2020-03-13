@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Select, TextInput, Button } from "evergreen-ui";
+import { Pane, Text, Select, TextInput, Button } from "evergreen-ui";
 import { GH_BASE_URL, JUMP_PAGES, JUMP_ROOT } from "../app/globals";
 
 class User extends React.Component {
@@ -32,7 +32,7 @@ class User extends React.Component {
 
   render() {
     return (
-      <div>
+      <Pane>
         <form onSubmit={this.handleSubmit}>
           <TextInput
             name="searchArg"
@@ -51,7 +51,10 @@ class User extends React.Component {
           </Select>
           <Button>GO</Button>
         </form>
-      </div>
+        <Pane margin={10}>
+          <Text>Search for Repo within a user or org</Text>
+        </Pane>
+      </Pane>
     );
   }
 }

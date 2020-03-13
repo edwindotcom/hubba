@@ -1,5 +1,6 @@
 {
   "name": "Hubba Extension",
+  "short_name": "Hubba",
   "version": "0.1.0",
   "manifest_version": 2,
   "description": "Hubba Extension: fastest way to search and browse GitHub",
