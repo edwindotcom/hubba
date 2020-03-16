@@ -2,7 +2,7 @@ import * as React from "react";
 import Component from "@reactions/component";
 import { Pane, Tab, Tablist} from "evergreen-ui";
 import ContentManager from "./ContentManager";
-import { TAB_ALL, TAB_USER, TAB_ORG, TAB_ISSUES, TAB_PATH } from "../app/globals";
+import { TAB_ALL, TAB_JUMP, TAB_ORG, TAB_ISSUES, TAB_PATH } from "../app/globals";
 
 class Hubba extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class Hubba extends React.Component {
       <Component
         initialState={{
           selectedIndex: 0,
-          tabs: [TAB_ALL, TAB_ORG, TAB_USER, TAB_ISSUES, TAB_PATH]
+          tabs: [TAB_ALL, TAB_JUMP, TAB_ISSUES, TAB_PATH]
         }}
       >
         {({ state, setState }) => (
@@ -28,11 +28,7 @@ class Hubba extends React.Component {
                 </Tab>
               ))}
             </Tablist>
-            <Pane
-              flex={1}
-              alignItems="left"
-              display="flex"
-            >
+            <Pane flex={1} alignItems="left" display="flex">
               {state.tabs.map((tab, index) => (
                 <Pane
                   key={tab}

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Pane, Text, Select, TextInput, Button } from "evergreen-ui";
-import { GH_BASE_URL, JUMP_PAGES, JUMP_ROOT } from "../app/globals";
+import { GH_BASE_URL, JUMP_PAGES, JUMP_ROOT, JUMP_GIST, GIST_BASE_URL } from "../app/globals";
 
-class User extends React.Component {
+class Jump extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,9 +20,12 @@ class User extends React.Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     let url
     if (this.state.searchType == JUMP_ROOT) {
         url = `${GH_BASE_URL}/${this.state.searchArg}`;
+    } else if (this.state.searchType == JUMP_GIST) {
+        url = `${GIST_BASE_URL}/${this.state.searchArg}`;
     } else if (this.state.searchType == JUMP_PAGES) {
         url = `https://${this.state.searchArg}.github.io`;
     }
@@ -47,16 +50,17 @@ class User extends React.Component {
             onChange={this.handleChange}
           >
             <option key={JUMP_ROOT}>{JUMP_ROOT}</option>
+            <option key={JUMP_PAGES}>{JUMP_GIST}</option>
             <option key={JUMP_PAGES}>{JUMP_PAGES}</option>
           </Select>
           <Button>GO</Button>
         </form>
         <Pane margin={10}>
-          <Text>Search for Repo within a user or org</Text>
+          <Text>Jump to a user or org space</Text>
         </Pane>
       </Pane>
     );
   }
 }
 
-export default User;
+export default Jump;

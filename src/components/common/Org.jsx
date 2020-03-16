@@ -22,6 +22,7 @@ class Org extends React.Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     let qs = `q=${this.state.repoArg}&type=&language=`;
     let url = `${GH_BASE_URL}/${this.state.rootArg}?${qs}`;
     window.open(url, "_blank");

@@ -23,11 +23,19 @@ class All extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit(e) {
+    e.preventDefault()
     let qs;
-    if(this.state.pathArg != ""){
-      qs = `q=user%3A${this.state.pathArg}+${this.state.rootArg}&type=${this.state.searchType}&language=`;
-    }else{
+    if (this.state.userArg != "") {
+      let userArg;
+      // if user has a slash in it, only use the first token
+      if (this.state.userArg.indexOf("/") > -1) {
+        userArg = this.state.userArg.split("/")[0];
+      } else {
+        userArg = this.state.userArg;
+      }
+      qs = `q=user%3A${userArg}+${this.state.rootArg}&type=${this.state.searchType}&language=`;
+    } else {
       qs = `q=${this.state.rootArg}&type=${this.state.searchType}&language=`;
     }
     let url = `${GH_BASE_URL}/search?${qs}`;
@@ -46,7 +54,7 @@ class All extends React.Component {
     if (this.state.showFilter) {
       repoFilter = (
         <TextInput
-          name="pathArg"
+          name="userArg"
           placeholder="User or Org"
           onChange={this.handleChange}
           width={256}
@@ -91,16 +99,7 @@ class All extends React.Component {
               Filter by Repo
             </Text>
           </Pane>
-          <Pane
-            margin={10}
-            float="left"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="column"
-            width={300}
-            height={160}
-          >
+          <Pane margin={10}>
             <Text>Easily browse and search GitHub</Text>
           </Pane>
         </form>

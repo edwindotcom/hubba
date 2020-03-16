@@ -1,5 +1,5 @@
 import * as React from "react";
-import { toaster, TextInput, Button, Strong } from "evergreen-ui";
+import { Pane, toaster, TextInput, Button, Strong } from "evergreen-ui";
 import { GH_BASE_URL } from "../app/globals";
 
 class Issues extends React.Component {
@@ -31,7 +31,7 @@ class Issues extends React.Component {
 
   render() {
     return (
-      <div>
+      <Pane>
         <form onSubmit={this.handleSubmit}>
           <Strong>GitHub user/repo:</Strong> <br />
           <TextInput
@@ -46,14 +46,14 @@ class Issues extends React.Component {
           <br />
           <TextInput
             name="searchArg"
-            placeholder="Search Param"
+            placeholder="label:bug"
             id={this.props.tab}
             onChange={this.handleChange}
             width={230}
           />
           <Button>GO</Button>
         </form>
-      </div>
+      </Pane>
     );
   }
 }
