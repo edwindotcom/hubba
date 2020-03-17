@@ -1,12 +1,19 @@
 import * as React from "react";
 import Component from "@reactions/component";
 import { Pane, TextInput, Select, Button, Text } from "evergreen-ui";
-import { SEARCH_TYPE_ARRAY, GH_BASE_URL, SEARCH_TYPE_USER } from "../app/globals";
+import {
+  SEARCH_TYPE_ARRAY,
+  GH_BASE_URL,
+  SEARCH_TYPE_USER,
+  SEARCH_TYPE_REPO,
+  trimStr
+} from "../app/globals";
 
 class All extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      userArg: "",
       rootArg: "",
       pathArg: "",
       showFilter: false,
@@ -44,9 +51,12 @@ class All extends React.Component {
 
   toggleFilter() {
     let { showFilter } = this.state;
-    this.setState({
-      showFilter: !showFilter
-    });
+    if (this.state.searchType === SEARCH_TYPE_USER){
+      this.state.searchType = SEARCH_TYPE_REPO
+    }
+      this.setState({
+        showFilter: !showFilter
+      });
   }
 
   render() {
@@ -95,11 +105,12 @@ class All extends React.Component {
               onClick={this.toggleFilter}
               name="showFilter"
               value="{true}"
+              textDecoration="underline"
             >
               Filter by Repo
             </Text>
           </Pane>
-          <Pane margin={10}>
+          <Pane marginTop={20}>
             <Text>Easily browse and search GitHub</Text>
           </Pane>
         </form>

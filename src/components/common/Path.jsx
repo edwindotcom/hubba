@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Pane, toaster, TextInput, Button, Strong } from "evergreen-ui";
-import { GH_BASE_URL, trimSlash } from "../app/globals";
+import { GH_BASE_URL, trimStr } from "../app/globals";
 
 class Path extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Path extends React.Component {
       toaster.danger("Slash '/' delimeter is required");
     } else {
       let url;
-      let searchStr = trimSlash(this.state.searchArg);
+      let searchStr = trimStr(this.state.searchArg);
       // Case: Is a path and has dot in filename - exact file
       if (searchStr.indexOf("/") > -1 && searchStr.indexOf(".") > -1) {
         url = `${GH_BASE_URL}/${this.state.pathArg}/blob/master/${this.state.searchArg}`;

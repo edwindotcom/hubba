@@ -41,8 +41,8 @@ export const SEARCH_TYPE_ARRAY = [
        ];
 
 
-export function trimSlash(s){
-  return s.replace(/^\/|\/$/g, "");
+export function trimStr(s){
+  return s.replace(/^\/|^\@|\/$/g, "");
 }
 
 

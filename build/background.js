@@ -1,18 +1,28 @@
+// Background.js 
+// Enables context menu jump feature
+
+function trimStr(s) {
+  return s.replace(/^\/|^\@|\/$/g, "").trim()
+}
+
 function openGithub(info, tab) {
+  let user = trimStr(info.selectionText)
   chrome.tabs.create({
-    url: "https://github.com/" + info.selectionText
+    url: "https://github.com/" + user
   });
 }
 
 function openGist(info, tab) {
+  let user = trimStr(info.selectionText);
   chrome.tabs.create({
-    url: "https://gist.github.com/" + info.selectionText
+    url: "https://gist.github.com/" + user
   });
 }
 
 function openPages(info, tab) {
+  let user = trimStr(info.selectionText);
   chrome.tabs.create({
-    url: `http://${info.selectionText}.github.io`
+    url: `http://${user}.github.io`
   });
 }
 

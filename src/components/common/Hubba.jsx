@@ -2,7 +2,7 @@ import * as React from "react";
 import Component from "@reactions/component";
 import { Pane, Tab, Tablist} from "evergreen-ui";
 import ContentManager from "./ContentManager";
-import { TAB_ALL, TAB_JUMP, TAB_ORG, TAB_ISSUES, TAB_PATH } from "../app/globals";
+import { TAB_ALL, TAB_JUMP, TAB_ISSUES, TAB_PATH } from "../app/globals";
 
 class Hubba extends React.Component {
   render() {

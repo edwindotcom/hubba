@@ -1,6 +1,13 @@
 import * as React from "react";
 import { Pane, Text, Select, TextInput, Button } from "evergreen-ui";
-import { GH_BASE_URL, JUMP_PAGES, JUMP_ROOT, JUMP_GIST, GIST_BASE_URL } from "../app/globals";
+import {
+  GH_BASE_URL,
+  JUMP_PAGES,
+  JUMP_ROOT,
+  JUMP_GIST,
+  GIST_BASE_URL,
+  trimStr
+} from "../app/globals";
 
 class Jump extends React.Component {
   constructor(props) {
@@ -22,12 +29,13 @@ class Jump extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let url
-    if (this.state.searchType == JUMP_ROOT) {
-        url = `${GH_BASE_URL}/${this.state.searchArg}`;
-    } else if (this.state.searchType == JUMP_GIST) {
-        url = `${GIST_BASE_URL}/${this.state.searchArg}`;
-    } else if (this.state.searchType == JUMP_PAGES) {
-        url = `https://${this.state.searchArg}.github.io`;
+    let searchArg = trimStr(this.state.searchArg);
+    if (this.state.searchType === JUMP_ROOT) {
+        url = `${GH_BASE_URL}/${searchArg}`;
+    } else if (this.state.searchType === JUMP_GIST) {
+        url = `${GIST_BASE_URL}/${searchArg}`;
+    } else if (this.state.searchType === JUMP_PAGES) {
+        url = `https://${searchArg}.github.io`;
     }
 
     window.open(url, "_blank");
