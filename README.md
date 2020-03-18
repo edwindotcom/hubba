@@ -5,6 +5,8 @@ Hi, ever find it hard to search and browse for stuff on GitHub.  Well this is yo
 ## Installation
 
 #### Webstore
+Get it here:
+https://chrome.google.com/webstore/detail/hubba/mgjgniohijhichlencdlniebglgopmca
 
 
 #### Local install
