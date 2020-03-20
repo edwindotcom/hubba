@@ -13,7 +13,7 @@ https://chrome.google.com/webstore/detail/hubba/mgjgniohijhichlencdlniebglgopmca
 
 * open a terminal and run:
 ```
-git clone
+git clone https://github.com/edwindotcom/hubba.git
 cd hubba
 yarn
 yarn run build
@@ -23,6 +23,9 @@ yarn run build
 * click `load unpacked extension`
 * browse to the `/build` of this cloned repo
 * look in tool tray for cat icon in browser
+
+or to run in a browser (not as an extension) run 
+`yarn start`
 
 ## Contributing
  
