@@ -30,13 +30,21 @@ class Jump extends React.Component {
     e.preventDefault();
     let url
     let searchArg = trimStr(this.state.searchArg);
+
     if (this.state.searchType === JUMP_ROOT) {
         url = `${GH_BASE_URL}/${searchArg}`;
-    } else if (this.state.searchType === JUMP_GIST) {
+    }else{
+      // if this is GIST or PAGES, only use token before the slash
+      console.log(searchArg)
+      if (searchArg.indexOf("/") > -1) {
+        searchArg = searchArg.split("/")[0];
+      }
+      if (this.state.searchType === JUMP_GIST) {
         url = `${GIST_BASE_URL}/${searchArg}`;
-    } else if (this.state.searchType === JUMP_PAGES) {
+      } else if (this.state.searchType === JUMP_PAGES) {
         url = `https://${searchArg}.github.io`;
-    }
+      }
+    } 
 
     window.open(url, "_blank");
   }

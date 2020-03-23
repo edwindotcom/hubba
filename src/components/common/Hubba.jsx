@@ -10,7 +10,7 @@ class Hubba extends React.Component {
       <Component
         initialState={{
           selectedIndex: 0,
-          tabs: [TAB_ALL, TAB_JUMP, TAB_ISSUES, TAB_PATH]
+          tabs: [TAB_JUMP, TAB_ALL, TAB_ISSUES, TAB_PATH]
         }}
       >
         {({ state, setState }) => (

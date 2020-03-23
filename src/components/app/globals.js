@@ -7,12 +7,12 @@ export const USER_BASE_URL = `${GH_BASE_URL}/search?type=Users&q=user%3A`;
 export const REPO_SEARCH_URL = `${GH_BASE_URL}/search?type=Repositories&q=`; // org%3Agithub+user%3Adata
 
 
-export const TAB_JUMP = "Jump";
+export const TAB_JUMP = "Quick Jump";
 export const TAB_REPO = "Repo";
 export const TAB_ORG = "Org";
 export const TAB_ISSUES = "Issues";
 export const TAB_PATH = "Path";
-export const TAB_ALL = "All";
+export const TAB_ALL = "Search All";
 
 export const JUMP_ROOT = "github.com";
 export const JUMP_PAGES = "github.io";
