@@ -5,8 +5,7 @@ import {
   SEARCH_TYPE_ARRAY,
   GH_BASE_URL,
   SEARCH_TYPE_USER,
-  SEARCH_TYPE_REPO,
-  trimStr
+  SEARCH_TYPE_REPO
 } from "../app/globals";
 
 class All extends React.Component {
@@ -33,7 +32,7 @@ class All extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     let qs;
-    if (this.state.userArg != "") {
+    if (this.state.userArg !== "") {
       let userArg;
       // if user has a slash in it, only use the first token
       if (this.state.userArg.indexOf("/") > -1) {
@@ -52,7 +51,7 @@ class All extends React.Component {
   toggleFilter() {
     let { showFilter } = this.state;
     if (this.state.searchType === SEARCH_TYPE_USER){
-      this.state.searchType = SEARCH_TYPE_REPO
+      this.setState({searchType: SEARCH_TYPE_REPO})
     }
       this.setState({
         showFilter: !showFilter

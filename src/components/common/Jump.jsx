@@ -28,24 +28,28 @@ class Jump extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let url
+    let url;
     let searchArg = trimStr(this.state.searchArg);
 
     if (this.state.searchType === JUMP_ROOT) {
-        url = `${GH_BASE_URL}/${searchArg}`;
-    }else{
-      // if this is GIST or PAGES, only use token before the slash
-      console.log(searchArg)
-      if (searchArg.indexOf("/") > -1) {
-        searchArg = searchArg.split("/")[0];
+      url = `${GH_BASE_URL}/${searchArg}`;
+    }
+    // If string has org/repo
+    if (searchArg.indexOf("/") > -1) {
+      let [rootArg, repoArg] = searchArg.split("/");
+      if (this.state.searchType === JUMP_GIST) {
+        url = `${GIST_BASE_URL}/${rootArg}`;
+      } else if (this.state.searchType === JUMP_PAGES) {
+        url = `https://${rootArg}.github.io/${repoArg}`;
       }
+    }else{
+      // Just an org param
       if (this.state.searchType === JUMP_GIST) {
         url = `${GIST_BASE_URL}/${searchArg}`;
       } else if (this.state.searchType === JUMP_PAGES) {
         url = `https://${searchArg}.github.io`;
       }
-    } 
-
+    }
     window.open(url, "_blank");
   }
 

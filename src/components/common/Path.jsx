@@ -21,7 +21,7 @@ class Path extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.pathArg.indexOf("/") == -1) {
+    if (this.state.pathArg.indexOf("/") === -1) {
       toaster.danger("Slash '/' delimeter is required");
     } else {
       let url;

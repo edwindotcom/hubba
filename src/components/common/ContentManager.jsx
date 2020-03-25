@@ -1,11 +1,10 @@
 import * as React from "react";
 import Jump from "./Jump";
-import Org from "./Org";
 import Issues from "./Issues";
 import Path from "./Path";
 import All from "./All";
 
-import { TAB_JUMP, TAB_ORG, TAB_ALL, TAB_ISSUES, TAB_PATH } from "../app/globals";
+import { TAB_JUMP, TAB_ALL, TAB_ISSUES, TAB_PATH } from "../app/globals";
 
 
 class Content extends React.Component {

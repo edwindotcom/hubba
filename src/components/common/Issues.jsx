@@ -21,7 +21,7 @@ class Issues extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.pathArg.indexOf("/") == -1) {
+    if (this.state.pathArg.indexOf("/") === -1) {
       toaster.danger("Slash '/' delimeter is required");
     }else{
       let url = `${GH_BASE_URL}/${this.state.pathArg}/issues?q=${this.state.searchArg}`;

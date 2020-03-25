@@ -42,7 +42,7 @@ export const SEARCH_TYPE_ARRAY = [
 
 
 export function trimStr(s){
-  return s.replace(/^\/|^\@|\/$/g, "");
+  return s.replace(/^\/|^@|\/$/g, "");
 }
 
 

@@ -1,7 +1,7 @@
 /*global chrome*/
 
 import React from "react";
-import { Pane, Heading, Link } from "evergreen-ui";
+import { Pane, Heading } from "evergreen-ui";
 import logo from "../../assets/icon128.png"
 import Hubba from "../common/Hubba";
 
