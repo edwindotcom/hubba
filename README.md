@@ -1,6 +1,8 @@
+![Hubba](https://github.com/edwindotcom/hubba/blob/master/icons/octoface128.png)
+
 ## Hubba 
 
-Hi, ever find it hard to search and browse for stuff on GitHub.  Well this is your too. Hubba is a Chrome/Edge extension to make browsing and searching GitHub easier. This is early days so expect more updates and features.
+Hi, ever find it hard to search and browse for stuff on GitHub.  Well this is your tool. Hubba is a Chrome/Edge/Brave extension to make browsing and searching GitHub easier. This is early days so expect more updates and features.
 
 ## Installation
 
