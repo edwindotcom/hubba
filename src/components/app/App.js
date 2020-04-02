@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Pane, Heading } from "evergreen-ui";
-import logo from "../../assets/icon128.png"
+import { ReactComponent as Icon } from "../../assets/octoface.svg";
 import Hubba from "../common/Hubba";
 
 function openLink() {
@@ -26,16 +26,14 @@ class App extends React.Component {
       <div className="App">
         <Pane>
           <Pane flex={1} alignItems="center" display="flex">
-            <img src={logo} alt="Logo" height={48} width={48} />
+            <Pane padding={6}>
+              <Icon height={48} width={48}></Icon>
+            </Pane>
             <Heading size={900}>Hubba</Heading>
           </Pane>
           <Hubba></Hubba>
           <Pane style={linkStyle}>
-            <Heading
-              cursor="pointer"
-              size={100}
-              onClick={openLink}
-            >
+            <Heading cursor="pointer" size={100} onClick={openLink}>
               source/help
             </Heading>
           </Pane>

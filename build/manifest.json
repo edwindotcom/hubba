@@ -1,21 +1,21 @@
 {
   "name": "Hubba",
   "short_name": "Hubba",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "manifest_version": 2,
   "description": "Hubba: fastest way to search and browse GitHub",
   "homepage_url": "https://github.com",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/octoface16.png",
+    "48": "icons/octoface48.png",
+    "128": "icons/octoface128.png"
   },
   "permissions": ["contextMenus", "background"],
   "background": {
     "scripts": ["background.js"]
   },
   "browser_action": {
-    "default_icon": "icons/icon19.png",
+    "default_icon": "icons/octoface19.png",
     "default_title": "Hubba",
     "default_popup": "index.html"
   }
