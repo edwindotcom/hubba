@@ -1,6 +1,6 @@
 {
   "name": "Hubba",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "dependencies": {
     "@reactions/component": "^2.0.2",
     "evergreen-ui": "^4.23.0",
