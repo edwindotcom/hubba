@@ -15,8 +15,10 @@ export const TAB_PATH = "Path";
 export const TAB_ALL = "Search All";
 
 export const JUMP_ROOT = "github.com";
-export const JUMP_PAGES = "github.io";
-export const JUMP_GIST = "gist.github.com"
+export const JUMP_PAGES = "Pages";
+export const JUMP_GIST = "Gists"
+export const JUMP_TEAM = "Teams";
+
 
 export const SEARCH_TYPE_USER = "Users";
 export const SEARCH_TYPE_CODE = "Code";
