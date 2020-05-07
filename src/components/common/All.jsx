@@ -32,19 +32,20 @@ class All extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     let qs;
+    let url;
     if (this.state.userArg !== "") {
       let userArg;
-      // if user has a slash in it, only use the first token
+      qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
+      // if user has a slash in it, search that repo
       if (this.state.userArg.indexOf("/") > -1) {
-        userArg = this.state.userArg.split("/")[0];
-      } else {
-        userArg = this.state.userArg;
+        url = `${GH_BASE_URL}/${this.state.userArg}/search?${qs}`;
+      }else{
+        url = `${GH_BASE_URL}/search?${qs}`;
       }
-      qs = `q=user%3A${userArg}+${this.state.rootArg}&type=${this.state.searchType}&language=`;
     } else {
-      qs = `q=${this.state.rootArg}&type=${this.state.searchType}&language=`;
+      qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
+      url = `${GH_BASE_URL}/search?${qs}`;
     }
-    let url = `${GH_BASE_URL}/search?${qs}`;
     window.open(url, "_blank");
   }
 
@@ -106,7 +107,7 @@ class All extends React.Component {
               value="{true}"
               textDecoration="underline"
             >
-              Filter by Repo
+              Search in Org/Repo
             </Text>
           </Pane>
           <Pane marginTop={20}>

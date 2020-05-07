@@ -12,7 +12,7 @@ export const TAB_REPO = "Repo";
 export const TAB_ORG = "Org";
 export const TAB_ISSUES = "Issues";
 export const TAB_PATH = "Path";
-export const TAB_ALL = "Search All";
+export const TAB_ALL = "Search";
 
 export const JUMP_ROOT = "github.com";
 export const JUMP_PAGES = "Pages";
