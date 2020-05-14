@@ -35,11 +35,12 @@ class All extends React.Component {
     let url;
     if (this.state.userArg !== "") {
       let userArg;
-      qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
       // if user has a slash in it, search that repo
       if (this.state.userArg.indexOf("/") > -1) {
+        qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
         url = `${GH_BASE_URL}/${this.state.userArg}/search?${qs}`;
       }else{
+        qs = `q=user%3A${this.state.userArg}+${this.state.rootArg}&type=${this.state.searchType}`;
         url = `${GH_BASE_URL}/search?${qs}`;
       }
     } else {
