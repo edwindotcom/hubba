@@ -5,6 +5,7 @@ import {
   SEARCH_TYPE_ARRAY,
   GH_BASE_URL,
   SEARCH_TYPE_USER,
+  SEARCH_TYPE_FILE,
   SEARCH_TYPE_REPO
 } from "../app/globals";
 
@@ -29,6 +30,9 @@ class All extends React.Component {
     });
   }
 
+  // https://github.com/search?q=user%3Ashopify+filename%3Aservice.yml&type=Code
+
+
   handleSubmit(e) {
     e.preventDefault()
     let qs;
@@ -40,7 +44,7 @@ class All extends React.Component {
         qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
         url = `${GH_BASE_URL}/${this.state.userArg}/search?${qs}`;
       }else{
-        qs = `q=user%3A${this.state.userArg}+${this.state.rootArg}&type=${this.state.searchType}`;
+        qs = `q=org%3A${this.state.userArg}+${this.state.rootArg}&type=${this.state.searchType}`;
         url = `${GH_BASE_URL}/search?${qs}`;
       }
     } else {

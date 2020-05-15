@@ -22,6 +22,7 @@ export const JUMP_TEAM = "Teams";
 
 export const SEARCH_TYPE_USER = "Users";
 export const SEARCH_TYPE_CODE = "Code";
+export const SEARCH_TYPE_FILE = "Filename";
 export const SEARCH_TYPE_REPO = "Repositories";
 export const SEARCH_TYPE_COMMITS = "Commits";
 export const SEARCH_TYPE_ISSUES = "Issues";
@@ -34,6 +35,7 @@ export const SEARCH_TYPE_ARRAY = [
          SEARCH_TYPE_REPO,
          SEARCH_TYPE_USER,
          SEARCH_TYPE_CODE,
+         SEARCH_TYPE_FILE,
          SEARCH_TYPE_COMMITS,
          SEARCH_TYPE_ISSUES,
          SEARCH_TYPE_PACKAGES,
