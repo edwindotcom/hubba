@@ -18,7 +18,8 @@ export const JUMP_ROOT = "github.com";
 export const JUMP_PAGES = "Pages";
 export const JUMP_GIST = "Gists"
 export const JUMP_TEAM = "Teams";
-
+export const JUMP_ACTIONS = "Actions";
+export const JUMP_ACTIONS_WF = "Workflows";
 
 export const SEARCH_TYPE_USER = "Users";
 export const SEARCH_TYPE_CODE = "Code";

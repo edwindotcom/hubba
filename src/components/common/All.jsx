@@ -1,25 +1,30 @@
 import * as React from "react";
 import Component from "@reactions/component";
-import { TextInput, Select, Button, Text } from "evergreen-ui";
+import { TextInput, Select, Button } from "evergreen-ui";
+import Cookies from 'universal-cookie';
 import {
   SEARCH_TYPE_ARRAY,
   GH_BASE_URL,
-  SEARCH_TYPE_USER,
   SEARCH_TYPE_REPO
 } from "../app/globals";
 
 class All extends React.Component {
+  
   constructor(props) {
     super(props);
+    this.cookies = new Cookies();
+    let orgArgCookie = this.cookies.get("orgArg") || ""
     this.state = {
-      userArg: "",
+      orgArg: orgArgCookie,
       rootArg: "",
       pathArg: "",
       showFilter: false,
-      searchType: SEARCH_TYPE_USER
+      searchType: SEARCH_TYPE_REPO
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+
   }
 
   handleChange(event) {
@@ -32,14 +37,15 @@ class All extends React.Component {
     e.preventDefault()
     let qs;
     let url;
-    if (this.state.userArg !== "") {
-      let userArg;
+
+    if (this.state.orgArg !== "") {
+      this.cookies.set("orgArg", this.state.orgArg, { path: "/" });
       // if user has a slash in it, search that repo
-      if (this.state.userArg.indexOf("/") > -1) {
+      if (this.state.orgArg.indexOf("/") > -1) {
         qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
-        url = `${GH_BASE_URL}/${this.state.userArg}/search?${qs}`;
+        url = `${GH_BASE_URL}/${this.state.orgArg}/search?${qs}`;
       }else{
-        qs = `q=user%3A${this.state.userArg}+${this.state.rootArg}&type=${this.state.searchType}`;
+        qs = `q=user%3A${this.state.orgArg}+${this.state.rootArg}&type=${this.state.searchType}`;
         url = `${GH_BASE_URL}/search?${qs}`;
       }
     } else {
@@ -53,8 +59,9 @@ class All extends React.Component {
     let repoFilter;
       repoFilter = (
         <TextInput
-          name="userArg"
+          name="orgArg"
           placeholder="User or Org"
+          value={this.state.orgArg}
           onChange={this.handleChange}
           width={256}
         />
