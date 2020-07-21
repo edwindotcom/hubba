@@ -17,6 +17,9 @@ class Issues extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+    if (event.target.name === "rootArg") {
+        this.props.currentOrgRepo(event.target.value);
+    }
   }
 
   handleSubmit(e) {

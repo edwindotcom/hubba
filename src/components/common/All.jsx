@@ -9,115 +9,140 @@ import {
 } from "../app/globals";
 
 class All extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userArg: "",
-      rootArg: "",
-      pathArg: "",
-      showFilter: false,
-      searchType: SEARCH_TYPE_USER
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleFilter = this.toggleFilter.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    let qs;
-    let url;
-    if (this.state.userArg !== "") {
-      let userArg;
-      // if user has a slash in it, search that repo
-      if (this.state.userArg.indexOf("/") > -1) {
-        qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
-        url = `${GH_BASE_URL}/${this.state.userArg}/search?${qs}`;
-      }else{
-        qs = `q=user%3A${this.state.userArg}+${this.state.rootArg}&type=${this.state.searchType}`;
-        url = `${GH_BASE_URL}/search?${qs}`;
-      }
-    } else {
-      qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
-      url = `${GH_BASE_URL}/search?${qs}`;
+    constructor(props) {
+        super(props);
+        this.state = {
+            userArg: "",
+            rootArg: "",
+            pathArg: "",
+            showFilter: false,
+            searchType: SEARCH_TYPE_USER,
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleFilter = this.toggleFilter.bind(this);
     }
-    window.open(url, "_blank");
-  }
 
-  toggleFilter() {
-    let { showFilter } = this.state;
-    if (this.state.searchType === SEARCH_TYPE_USER){
-      this.setState({searchType: SEARCH_TYPE_REPO})
+    // Search by filename
+    // https://github.com/search?q=user%3Ashopify+filename%3Aservice.yml&type=Code
+    buildQs(userArg, rootArg, searchType) {
+        let qs = "?q=";
+        // search is filtered by user-org and/or repo
+        if (userArg) {
+            qs = `${qs}${rootArg}&type=${searchType}`;
+        } else {
+            qs = `${qs}${rootArg}&type=${searchType}`;
+        }
+        return qs;
     }
-      this.setState({
-        showFilter: !showFilter
-      });
-  }
 
-  render() {
-    let repoFilter;
-    if (this.state.showFilter) {
-      repoFilter = (
-        <TextInput
-          name="userArg"
-          placeholder="User or Org"
-          onChange={this.handleChange}
-          width={256}
-        />
-      );
-    } else {
-      repoFilter = (<div></div>);
+    buildUrl(userArg, isUserFilter) {
+        let url = GH_BASE_URL;
+        if (isUserFilter) {
+            url = `${url}/${userArg}/search`;
+        } else {
+            url = `${url}/search`;
+        }
+        return url;
     }
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          {repoFilter}
-          <TextInput
-            name="rootArg"
-            placeholder="Search..."
-            onChange={this.handleChange}
-            width={150}
-          />
-          <Component>
-            {({ state, setState }) => (
-              <Select
-                name="searchType"
-                value={this.state.searchType}
-                onChange={this.handleChange}
-              >
-                {SEARCH_TYPE_ARRAY.map(val => (
-                  <option key={val}>{val}</option>
-                ))}
-                }
-              </Select>
-            )}
-          </Component>
-          <Button>GO</Button>
-          <br></br>
-          <Pane float="right">
-            <Text
-              cursor="pointer"
-              onClick={this.toggleFilter}
-              name="showFilter"
-              value="{true}"
-              textDecoration="underline"
-            >
-              Search in Org/Repo
-            </Text>
-          </Pane>
-          <Pane marginTop={20}>
-            <Text>Easily browse and search GitHub</Text>
-          </Pane>
-        </form>
-      </div>
-    );
-  }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.callback(this.state.userArg);
+
+        let qs;
+        let url;
+        if (this.state.userArg !== "") {
+            // if user has a slash in it, search that repo
+            if (this.state.userArg.indexOf("/") > -1) {
+                qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
+                url = `${GH_BASE_URL}/${this.state.userArg}/search?${qs}`;
+            } else {
+                qs = `q=user%3A${this.state.userArg}+${this.state.rootArg}&type=${this.state.searchType}`;
+                url = `${GH_BASE_URL}/search?${qs}`;
+            }
+        } else {
+            qs = `q=${this.state.rootArg}&type=${this.state.searchType}`;
+            url = `${GH_BASE_URL}/search?${qs}`;
+        }
+        window.open(url, "_blank");
+    }
+
+    toggleFilter() {
+        let { showFilter } = this.state;
+        if (this.state.searchType === SEARCH_TYPE_USER) {
+            this.setState({ searchType: SEARCH_TYPE_REPO });
+        }
+        this.setState({
+            showFilter: !showFilter,
+        });
+    }
+
+    render() {
+        let repoFilter;
+        if (this.state.showFilter) {
+            repoFilter = (
+                <TextInput
+                    name="userArg"
+                    placeholder="User or Org"
+                    onChange={this.handleChange}
+                    width={256}
+                />
+            );
+        } else {
+            repoFilter = <div></div>;
+        }
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    {repoFilter}
+                    <TextInput
+                        name="rootArg"
+                        placeholder="Search..."
+                        onChange={this.handleChange}
+                        width={150}
+                        value={this.state.currentOrgRepo}
+                    />
+                    <Component>
+                        {({ state, setState }) => (
+                            <Select
+                                name="searchType"
+                                value={this.state.searchType}
+                                onChange={this.handleChange}
+                            >
+                                {SEARCH_TYPE_ARRAY.map((val) => (
+                                    <option key={val}>{val}</option>
+                                ))}
+                                }
+                            </Select>
+                        )}
+                    </Component>
+                    <Button>GO</Button>
+                    <br></br>
+                    <Pane float="right">
+                        <Text
+                            cursor="pointer"
+                            onClick={this.toggleFilter}
+                            name="showFilter"
+                            value="{true}"
+                            textDecoration="underline"
+                        >
+                            Search in Org/Repo
+                        </Text>
+                    </Pane>
+                    <Pane marginTop={20}>
+                        <Text>Easily browse and search GitHub</Text>
+                    </Pane>
+                </form>
+            </div>
+        );
+    }
 }
 
 export default All;
