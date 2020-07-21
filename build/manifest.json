@@ -1,7 +1,7 @@
 {
   "name": "Hubba",
   "short_name": "Hubba",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "manifest_version": 2,
   "description": "Hubba: fastest way to search and browse GitHub",
   "homepage_url": "https://github.com",

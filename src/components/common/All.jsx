@@ -1,6 +1,6 @@
 import * as React from "react";
 import Component from "@reactions/component";
-import { Pane, TextInput, Select, Button, Text } from "evergreen-ui";
+import { TextInput, Select, Button, Text } from "evergreen-ui";
 import {
   SEARCH_TYPE_ARRAY,
   GH_BASE_URL,
@@ -20,7 +20,6 @@ class All extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleFilter = this.toggleFilter.bind(this);
   }
 
   handleChange(event) {
@@ -50,19 +49,8 @@ class All extends React.Component {
     window.open(url, "_blank");
   }
 
-  toggleFilter() {
-    let { showFilter } = this.state;
-    if (this.state.searchType === SEARCH_TYPE_USER){
-      this.setState({searchType: SEARCH_TYPE_REPO})
-    }
-      this.setState({
-        showFilter: !showFilter
-      });
-  }
-
   render() {
     let repoFilter;
-    if (this.state.showFilter) {
       repoFilter = (
         <TextInput
           name="userArg"
@@ -71,9 +59,6 @@ class All extends React.Component {
           width={256}
         />
       );
-    } else {
-      repoFilter = (<div></div>);
-    }
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -99,21 +84,6 @@ class All extends React.Component {
             )}
           </Component>
           <Button>GO</Button>
-          <br></br>
-          <Pane float="right">
-            <Text
-              cursor="pointer"
-              onClick={this.toggleFilter}
-              name="showFilter"
-              value="{true}"
-              textDecoration="underline"
-            >
-              Search in Org/Repo
-            </Text>
-          </Pane>
-          <Pane marginTop={20}>
-            <Text>Easily browse and search GitHub</Text>
-          </Pane>
         </form>
       </div>
     );
