@@ -1,10 +1,10 @@
 import * as React from "react";
 import Jump from "./Jump";
-import Issues from "./Issues";
-import Path from "./Path";
+// import Issues from "./Issues";
+// import Path from "./Path";
 import All from "./All";
 
-import { TAB_JUMP, TAB_ALL, TAB_ISSUES, TAB_PATH } from "../app/globals";
+import { TAB_JUMP, TAB_ALL } from "../app/globals";
 
 
 class Content extends React.Component {
@@ -13,10 +13,10 @@ class Content extends React.Component {
         return <Jump></Jump>;
       // } else if (this.props.tab === TAB_ORG) {
       //   return <Org></Org>;
-      } else if (this.props.tab === TAB_ISSUES) {
-        return <Issues></Issues>;
-      } else if (this.props.tab === TAB_PATH) {
-        return <Path></Path>;
+      // } else if (this.props.tab === TAB_ISSUES) {
+      //   return <Issues></Issues>;
+      // } else if (this.props.tab === TAB_PATH) {
+      //   return <Path></Path>;
       } else if (this.props.tab === TAB_ALL) {
         return <All></All>;
       }

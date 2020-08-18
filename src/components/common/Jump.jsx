@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Pane, Select, TextInput, Button } from "evergreen-ui";
+import { Pane, Select, Button } from "evergreen-ui";
 import Cookies from "universal-cookie";
 import {
     GH_BASE_URL,
@@ -16,19 +16,24 @@ import {
 class Jump extends React.Component {
     constructor(props) {
         super(props);
+        // Set Cookies for last value and the history of values
         this.cookies = new Cookies();
         let searchArgCookie = this.cookies.get("searchArg") || "";
+        let searchArrayCookie = this.cookies.get("searchArray") || [];
+
         this.state = {
             searchArg: searchArgCookie,
+            searchArray: searchArrayCookie,
             searchType: JUMP_ROOT,
         };
+        console.log(this.state.searchArray);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value
         });
     }
 
@@ -36,7 +41,12 @@ class Jump extends React.Component {
         e.preventDefault();
         let url;
         let searchArg = trimStr(this.state.searchArg);
+        // Cookies
         this.cookies.set("searchArg", this.state.searchArg, { path: "/" });
+        this.state.searchArray.push(this.state.searchArg)
+        this.cookies.set("searchArray", this.state.searchArray, {
+            path: "/",
+        });
 
         // If it's github.com just pass the string through
         if (this.state.searchType === JUMP_ROOT) {
@@ -77,14 +87,28 @@ class Jump extends React.Component {
         return (
             <Pane>
                 <form onSubmit={this.handleSubmit}>
-                    <TextInput
+                    {/* <TextInput
                         name="searchArg"
                         placeholder="Jump to User/Org"
                         id={this.props.tab}
                         value={this.state.searchArg}
                         onChange={this.handleChange}
                         width={150}
+                    /> */}
+                    <input
+                        name="searchArg"
+                        placeholder="Jump to User/Org"
+                        id={this.props.tab}
+                        value={this.state.searchArg}
+                        onChange={this.handleChange}
+                        width={150}
+                        list="opts"
                     />
+                    <datalist id="opts">
+                        {this.state.searchArray.map((val) => (
+                            <option value={val}>{val}</option>
+                        ))}
+                    </datalist>
                     <Select
                         name="searchType"
                         value={this.state.searchType}
