@@ -4,6 +4,11 @@
 
 Hi, ever find it hard to search and browse for stuff on GitHub.  Well this is your tool. Hubba is a Chrome/Edge/Brave extension to make browsing and searching GitHub easier. This is early days so expect more updates and features.
 
+### Check it out:
+![Context Menu](resources/contextMenu.png)
+
+![Chrome Extension](resources/popup.png)
+
 ## Installation
 
 #### Webstore
